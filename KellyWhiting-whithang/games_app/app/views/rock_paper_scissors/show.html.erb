@@ -1,0 +1,18 @@
+   
+ 
+ <% if (@winner == "player") %>
+   <%= render 'win' %>
+ <% elsif (@winner == "app") %>
+   <%= render 'lose' %>
+ <% else %>
+ 	<%= render 'tie' %>
+ <% end %>
+<!-- should partials use different names in different controllers?
+
+and what does error no frames collected mean?-->
+
+<p>
+  <h3>LET'S PLAY AGAIN! Choose your game:</br>
+  <%= link_to "Secret Number Game", new_secret_number_path %></br>
+<%= link_to "Rock Paper Scissors Game", new_rock_paper_scissor_path %></h3>
+</p>
