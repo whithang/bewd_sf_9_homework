@@ -1,0 +1,15 @@
+<h1>Edit  metadata for <%= @movie.title %></h1>
+<p>Update any fields you want to edit:</p>
+
+
+
+<%= form_for @movie do |m| %>
+
+	<ul> Title: <%= m.text_field :title %></ul>
+	<ul> Year Released: <%= m.text_field :year_released %></ul>
+	<ul> Description: <%= m.text_field :description, size:100%></ul>
+	<ul> <%= m.submit "Update" %></ul><br> 
+	<ul> <%= link_to "Home", movies_path, class: 'btn btn-lg btn-danger' %></ul>
+
+	<% end %>
+<!-- can I have the submit button redirect to somewhere other than the update view?  can we list all metadata with a link to popup an edit box and save one piece of data only, to-do:  google how to update a single field -->
