@@ -3,4 +3,9 @@
 <ul> Title: <%=@movie.title %></ul>
 	<ul> Year Released: <%= @movie.year_released %> </ul>
 	<ul> Description: <%= @movie.description %></ul>
+	<ul> Reviews:<br> 
+		<li><% render @movie.reviews %>
+		</li>
+	</ul>
+
 	<ul><%= link_to "Edit", edit_movie_path, class: 'btn btn-lg btn-danger' %> <%= link_to "Home", movies_path, class: 'btn btn-lg btn-danger' %></ul>

@@ -1,12 +1,12 @@
 <h1>New Oscar-Winning Movie</h1>
-<%= form_for @movie do |m| %>
 
-	<ul> Title: <%= m.text_field :title %></ul>
-	<ul> Year Released: <%= m.text_field :year_released %></ul>
-	<ul> Description: <%= m.text_field :description %></ul>
-	<ul> <%= m.submit "Create New Movie" %></ul>
-	<ul> <%= link_to "Home", movies_path, class: 'btn btn-lg btn-danger' %></ul>
+<%= simple_form_for @movie do |f| %>
 
-	<% end %>
+<%= f.input :title %>
+<%= f.input :description %>
+<%= f.input :year_released %>
+<%= f.submit "Create New Movie"%>
+
+<% end %>
 
 <!-- how do i update the format of the submit button -->

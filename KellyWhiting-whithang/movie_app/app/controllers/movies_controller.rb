@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   def index
   	@movies = Movie.all
+    @review = Review.all
   end
 
 	def new
@@ -8,9 +9,12 @@ class MoviesController < ApplicationController
 	end
 
   def create
-  	@movie = Movie.create(movie_params)
-
-  	redirect_to movies_path
+  	@movie = Movie.new(movie_params)
+    if @movie.save
+      redirect_to movies_path, notice: "Movie successfully created"
+    else
+      render "new"
+    end
   end
 
 	def edit
@@ -29,6 +33,12 @@ class MoviesController < ApplicationController
  		@movie = get_movie
   end
 
+def destroy
+    @movie = set_movie
+    @movie.destroy
+    redirect_to movies_path
+  end
+  
   private
 
   def movie_params

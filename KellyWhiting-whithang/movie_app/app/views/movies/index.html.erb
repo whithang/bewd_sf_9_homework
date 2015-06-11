@@ -3,5 +3,6 @@
 
 <p> <% @movies.each do |movie| %>
 	<ul><%= link_to "#{movie.title}", movie_path(movie) %></ul>
+	<!-- <%= movie.title.titleize %> -->
 	<% end %>
 		<%= link_to "Add New Movie", new_movie_path, class: 'btn btn-lg btn-danger' %> </p>

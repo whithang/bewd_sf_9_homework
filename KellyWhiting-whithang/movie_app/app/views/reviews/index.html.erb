@@ -1,0 +1,6 @@
+<p>See our collection of Movie Reviews</p>
+
+<p> <% @reviews.each do |review| %>
+	<ul><%= link_to "Review for #{movie.title}", movie_path(movie) %></ul>
+	<!-- <%= movie.title.titleize %> -->
+	<% end %>
