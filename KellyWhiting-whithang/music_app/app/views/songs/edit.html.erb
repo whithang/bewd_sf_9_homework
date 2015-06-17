@@ -1,0 +1,15 @@
+<h1>Edit  metadata for <%= @song.title %> by <%= @song.artist.name %></h1>
+<p>Update any fields you want to edit:</p>
+
+
+
+<%= form_for @song do |f| %>
+
+	<ul> Song Title: <%= f.text_field :title %></ul>
+	<ul> Album: <%= f.text_field :album %></ul>
+	<ul> Release Year: <%= f.text_field :year %></ul>
+	<%= f.hidden_field :artist_id, value: params[:artist_id] %> 
+	<ul> <%= f.submit "Update" %></ul><br> 
+	<ul> <%= link_to "Home", artists_path, class: 'btn btn-lg btn-danger' %></ul>
+
+	<% end %>

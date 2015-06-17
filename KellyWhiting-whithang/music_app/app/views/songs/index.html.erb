@@ -1,0 +1,9 @@
+<h1 style="color:#cc3333;">The Incredible Music App</h1>
+<p>See our collection of top music songs
+<%= link_to "See All Artists", artists_path, class: 'btn btn-lg btn-danger' %> </p></p>
+<p><%= javascript_include_tag "application" %> </p>
+<p> <% @songs.each do |song| %>
+	<ul><%= link_to "#{song.title}", artist_song_path(song.artist, song) %></ul>
+	
+	<% end %>
+		
