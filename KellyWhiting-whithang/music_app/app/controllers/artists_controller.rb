@@ -37,6 +37,7 @@ def destroy
     # binding.pry
     # @artist = get_artist
     # @artist.destroy
+    # need to delete all songs associated with this artist too
     redirect_to artist_path, notice: "Artist successfully deleted"
   end
   

@@ -34,8 +34,8 @@ class SongsController < ApplicationController
 
 def destroy
   # binding.pry
-  #   @song = set_song
-  #   @song.destroy
+    @song = get_song
+    @song.destroy
     redirect_to artist_path, notice: "Song successfully deleted"
   end
   
