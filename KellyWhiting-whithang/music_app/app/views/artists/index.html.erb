@@ -1,4 +1,4 @@
-<h1 style="color:#cc3333;">The Incredible Music App</h1>
+<h1 style="color:#000000;">The Incredible Music App</h1>
 <p>See our collection of top artists
 <br><br><%= link_to "See All Record Labels", record_labels_path, class: 'btn btn-default btn-xs' %>
   <%= link_to "See All Songs", songs_path, class: 'btn btn-default btn-xs' %> 
@@ -16,7 +16,7 @@
 						<%= link_to "#{artist.name}", artist_path(artist) %></ul>
 						</td>
 						<td>
-							<%= link_to "Songs\'s by this Artist", artist_songs_path(artist), class: 'btn btn-default btn-xs' %> 
+							<%= link_to "Songs\'s by this Artist", artist_songs_path(artist), class: 'btn btn-primary btn-xs' %> 
 							<!-- not passing a subset, returning all values -->
 						</td>
 			</tr>

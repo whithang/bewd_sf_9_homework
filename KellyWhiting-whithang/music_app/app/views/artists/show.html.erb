@@ -5,8 +5,8 @@
 	<br><br>
 	Represented by: <%= @artist.record_label.name %><br>
 </p>
-<%= link_to "Edit Artist", edit_artist_path(@artist.id), class: 'btn btn-lg btn-danger' %>
-<%= link_to "Delete Artist", artist_path(@artist), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-lg btn-danger' %>
+<%= link_to "Edit Artist", edit_artist_path(@artist.id), class: 'btn btn-info' %>
+<%= link_to "Delete Artist", artist_path(@artist), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger' %>
 <table class="table table-striped table-hover">
 			<tr class="large">
 				<th>Songs</th>
@@ -14,14 +14,15 @@
 			</tr>
 				<% @artist.songs.each do |song| %>
 			<tr class="small">
-				<td><%= song.title %></td>
-				<td><%= link_to "Details", artist_song_path(song.artist, song), class: 'btn btn-default btn-xs' %><br>
+				
+				<td><%= link_to "#{song.title}", artist_song_path(song.artist, song) %>
+				<br>
 				</td>
 				<% end %>
 			</tr>
 	</table>
 
 
-<%= link_to "Add New Song", new_artist_song_path(@artist.id), class: 'btn btn-lg btn-danger' %>
+<%= link_to "Add New Song", new_artist_song_path(@artist.id), class: 'btn btn-primary' %>
 
-<%= link_to "Home", "/", class: 'btn btn-lg btn-danger' %>
+<%= link_to "Home", "/", class: 'btn btn-primary' %>
