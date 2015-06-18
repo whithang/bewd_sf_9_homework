@@ -11,18 +11,19 @@ gem 'jquery-rails'
 
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-
-gem 'bootstrap-sass', '~> 3.3.4'
 gem 'simple_form'
-gem 'annotate'
+
 
 #remove spring && turbolinks for all future apps 
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'devise'
 
 group :development, :test do
 	gem 'pry-byebug'
 	gem 'better_errors'
 	gem 'binding_of_caller'
 	gem 'pry-rails'
-
+	gem 'byebug'
+	gem 'annotate'
 end
 

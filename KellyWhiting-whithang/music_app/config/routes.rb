@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,9 +14,9 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
           
-      resources :artists do
-        resources :songs
-      end
+    resources :artists do
+      resources :songs
+    end
     
     resources :record_labels do
       resources :artists
@@ -23,6 +24,12 @@ Rails.application.routes.draw do
 
     resources :songs
     resources :record_labels
+
+    devise_scope :user do
+      get "/signin", to: "devise/sessions#new", as: "sign_in"
+      delete "/sign_out", to: "devise/sessions#destroy", as: "sign_out"
+      get "sign_up", to: "devise/registrations#new", as: "sign_up"
+    end
 
   # Example resource route with options:
   #   resources :products do

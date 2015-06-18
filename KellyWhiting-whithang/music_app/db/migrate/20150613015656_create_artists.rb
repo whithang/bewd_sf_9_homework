@@ -5,6 +5,7 @@ class CreateArtists < ActiveRecord::Migration
       t.text :bio
       t.integer :formed_date
       t.string :formed_city
+      
 
       t.timestamps null: false
     end

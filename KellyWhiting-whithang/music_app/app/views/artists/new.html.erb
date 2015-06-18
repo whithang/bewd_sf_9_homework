@@ -6,7 +6,9 @@
 <%= f.input :bio %>
 <%= f.input :formed_date %>
 <%= f.input :formed_city %>
+<%= f.input :photo %>
 <%= f.hidden_field :record_label_id, value: params[:record_label_id] %> 
 <%= f.submit "Add New Artist"%>
 
 <% end %>
+<br><br><%= link_to "Home", "/", class: 'btn btn-primary' %>

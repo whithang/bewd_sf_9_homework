@@ -4,11 +4,11 @@
   <%= link_to "See All Songs", songs_path, class: 'btn btn-default btn-xs' %> 
     <%= link_to "Home", "/", class: 'btn btn-default btn-xs' %> 
 </p>
-<p><%= javascript_include_tag "application" %> </p>
+
 <p> 
 	<table class="table table-striped table-hover">
 			<tr class="small">
-				<th>All Artists  </th>
+				<th><h1>All Artists</h1></th>
 			</tr>
 			<% @artists.each do |artist| %>
 			<tr class="small">

@@ -4,12 +4,13 @@
 	Career Start: <%= @artist.formed_date %> in <%= @artist.formed_city %>
 	<br><br>
 	Represented by: <%= @artist.record_label.name %><br>
+	<%= image_tag(@artist.photo, :class => 'img-thumbnail img-rounded img-responsive') unless @artist.photo.nil? %><br>
 </p>
 <%= link_to "Edit Artist", edit_artist_path(@artist.id), class: 'btn btn-info' %>
 <%= link_to "Delete Artist", artist_path(@artist), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger' %>
 <table class="table table-striped table-hover">
 			<tr class="large">
-				<th>Songs</th>
+				<th><h1>Songs</h1></th>
 				<th></th>
 			</tr>
 				<% @artist.songs.each do |song| %>

@@ -49,7 +49,7 @@ def destroy
   private
 
   def artist_params
-  	params.require(:artist).permit(:name, :bio, :formed_date, :formed_city, :record_label_id)
+  	params.require(:artist).permit(:name, :bio, :formed_date, :formed_city, :record_label_id, :photo)
   end
 
   def get_artist
