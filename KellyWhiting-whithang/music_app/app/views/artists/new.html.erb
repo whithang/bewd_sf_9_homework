@@ -6,6 +6,7 @@
 <%= f.input :bio %>
 <%= f.input :formed_date %>
 <%= f.input :formed_city %>
+<%= f.hidden_field :record_label_id, value: params[:record_label_id] %> 
 <%= f.submit "Add New Artist"%>
 
 <% end %>

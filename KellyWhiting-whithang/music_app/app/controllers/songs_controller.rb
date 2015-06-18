@@ -1,6 +1,11 @@
 class SongsController < ApplicationController
 	def index
-  	@songs = Song.all
+    if params[:artist_id]
+      @songs = Song.where(artist_id: params[:artist_id])
+    else
+      @songs = Song.all
+    end
+  	
   end
 
 	def new
@@ -36,7 +41,7 @@ def destroy
   # binding.pry
     @song = get_song
     @song.destroy
-    redirect_to artist_path, notice: "Song successfully deleted"
+    redirect_to artists_path, notice: "Song successfully deleted"
   end
   
   private

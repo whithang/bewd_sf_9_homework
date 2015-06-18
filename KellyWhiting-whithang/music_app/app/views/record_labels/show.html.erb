@@ -1,0 +1,26 @@
+<h1> <%= @record_label.name %> </h1>
+
+<p>City: <%= @record_label.city %><br><br>
+	Launched: <%= @record_label.year_founded %> 
+	<br>Music Genre: <%= @record_label.genre %>
+	<br>Number of Artists: <%= @record_label.artists.count %>
+</p>
+
+<table class="table table-striped table-hover">
+			<tr class="large">
+				<th>Artists</th>
+				<th></th>
+			</tr>
+				<% @record_label.artists.each do |artist| %>
+			<tr class="small">
+				<td><%= artist.name %></td>
+				<td><%= link_to "Details", record_label_artist_path(@record_label, artist), class: 'btn btn-default btn-xs' %><br>
+				</td>
+				<% end %>
+			</tr>
+	</table>
+
+
+<%= link_to "Add New Artist", new_record_label_artist_path(@record_label), class: 'btn btn-lg btn-danger' %>
+
+<%= link_to "Home", "/", class: 'btn btn-lg btn-danger' %>

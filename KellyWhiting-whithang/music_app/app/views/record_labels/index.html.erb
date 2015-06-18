@@ -1,6 +1,6 @@
 <h1 style="color:#cc3333;">The Incredible Music App</h1>
-<p>See our collection of top artists
-<br><br><%= link_to "See All Record Labels", record_labels_path, class: 'btn btn-default btn-xs' %>
+<p>See our collection of top record labels
+<br><br><%= link_to "See All Artists", artists_path, class: 'btn btn-default btn-xs' %>
   <%= link_to "See All Songs", songs_path, class: 'btn btn-default btn-xs' %> 
     <%= link_to "Home", "/", class: 'btn btn-default btn-xs' %> 
 </p>
@@ -8,18 +8,19 @@
 <p> 
 	<table class="table table-striped table-hover">
 			<tr class="small">
-				<th>All Artists  </th>
+				<th>All Record Labels  </th>
 			</tr>
-			<% @artists.each do |artist| %>
+			<% @record_labels.each do |label| %>
 			<tr class="small">
 						<td><ul>
-						<%= link_to "#{artist.name}", artist_path(artist) %></ul>
+						<%= link_to "#{label.name}", record_label_path(label) %></ul>
 						</td>
 						<td>
-							<%= link_to "Songs\'s by this Artist", artist_songs_path(artist), class: 'btn btn-default btn-xs' %> 
+							<%= link_to "Artist\'s on this Label", record_label_artists_path(label), class: 'btn btn-default btn-xs' %> 
 							<!-- not passing a subset, returning all values -->
 						</td>
 			</tr>
+
 			<% end %>
 	</table>
 </p>

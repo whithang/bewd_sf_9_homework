@@ -1,15 +1,20 @@
 class ArtistsController < ApplicationController
 	def index
-  	@artists = Artist.all
-    
+    if params[:record_label_id]
+      @artists = Artist.where(record_label_id: params[:record_label_id])
+    else
+      @artists = Artist.all
+    end
   end
 
 	def new
-		@artist = Artist.new
+      @artist = Artist.new
+  
 	end
 
   def create
-  	@artist = Artist.new(artist_params)
+    @artist = Artist.new(artist_params)
+
     if @artist.save
       redirect_to artists_path, notice: "New Artist successfully created"
     else
@@ -35,16 +40,16 @@ class ArtistsController < ApplicationController
 
 def destroy
     # binding.pry
-    # @artist = get_artist
-    # @artist.destroy
+    @artist = get_artist
+    @artist.destroy
     # need to delete all songs associated with this artist too
-    redirect_to artist_path, notice: "Artist successfully deleted"
+    redirect_to artists_path, notice: "Artist successfully deleted"
   end
   
   private
 
   def artist_params
-  	params.require(:artist).permit(:name, :bio, :formed_date, :formed_city)
+  	params.require(:artist).permit(:name, :bio, :formed_date, :formed_city, :record_label_id)
   end
 
   def get_artist

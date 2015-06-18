@@ -2,6 +2,8 @@
 
 <p>Artist Bio: <%= @artist.bio %><br><br>
 	Career Start: <%= @artist.formed_date %> in <%= @artist.formed_city %>
+	<br><br>
+	Represented by: <%= @artist.record_label.name %><br>
 </p>
 <%= link_to "Edit Artist", edit_artist_path(@artist.id), class: 'btn btn-lg btn-danger' %>
 <%= link_to "Delete Artist", artist_path(@artist), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-lg btn-danger' %>
@@ -22,4 +24,4 @@
 
 <%= link_to "Add New Song", new_artist_song_path(@artist.id), class: 'btn btn-lg btn-danger' %>
 
-<%= link_to "Home", artists_path, class: 'btn btn-lg btn-danger' %>
+<%= link_to "Home", "/", class: 'btn btn-lg btn-danger' %>

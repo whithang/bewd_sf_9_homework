@@ -11,15 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614182410) do
+ActiveRecord::Schema.define(version: 20150617220532) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
     t.text     "bio"
     t.integer  "formed_date"
     t.string   "formed_city"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "record_label_id"
+  end
+
+  add_index "artists", ["record_label_id"], name: "index_artists_on_record_label_id"
+
+  create_table "record_labels", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "year_founded"
+    t.string   "city"
+    t.string   "genre"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "songs", force: :cascade do |t|

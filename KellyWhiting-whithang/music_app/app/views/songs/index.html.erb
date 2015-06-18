@@ -1,6 +1,8 @@
 <h1 style="color:#cc3333;">The Incredible Music App</h1>
 <p>See our collection of top music songs
-<br><br><%= link_to "See All Artists", artists_path, class: 'btn btn-default btn-xs' %> </p></p>
+<br><br><%= link_to "See All Artists", artists_path, class: 'btn btn-default btn-xs' %>
+  <%= link_to "See All Record Labels", record_labels_path, class: 'btn btn-default btn-xs' %> 
+    <%= link_to "Home", "/", class: 'btn btn-default btn-xs' %> 
 <p><%= javascript_include_tag "application" %> </p>
 <p> 
 	<table class="table table-striped table-hover">
@@ -9,7 +11,7 @@
 			</tr>
 			<% @songs.each do |song| %>
 			<tr class="small">
-						<td><ul><%= link_to 'Details', song_path(song), class: "btn btn-default btn-xs" %>
+						<td><ul>
 						<%= link_to "#{song.title}", song_path(song) %></ul>
 						</td>
 			</tr>

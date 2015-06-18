@@ -6,4 +6,4 @@
 
 <%= link_to "Edit Song", edit_artist_song_path(@song.artist, @song), class: 'btn btn-lg btn-danger' %>
 <%= link_to "Delete Song", artist_song_path(@song.artist, @song), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-lg btn-danger' %>
-<%= link_to "Home", artists_path, class: 'btn btn-lg btn-danger' %>
+<%= link_to "Home", "/", class: 'btn btn-lg btn-danger' %>

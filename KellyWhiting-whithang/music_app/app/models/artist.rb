@@ -1,6 +1,7 @@
 class Artist < ActiveRecord::Base
-	has_many :songs
-	validates_presence_of :name
+	has_many :songs, dependent: :destroy
+	belongs_to :record_label
+	validates_presence_of :name, :record_label_id
 end
 
 # create_table "artists", force: :cascade do |t|

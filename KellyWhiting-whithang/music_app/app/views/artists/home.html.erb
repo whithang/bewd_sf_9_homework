@@ -1,0 +1,19 @@
+
+
+<div class="col-md-12">
+	<div class="table-responsive">
+		<h1 style="color:#cc3333;">The Incredible Music App</h1>
+		<p>See our collection of top music artists & songs</p>					
+		<p><%= javascript_include_tag "application" %> </p>
+
+		<table class="table table-striped table-hover">
+			<tr class="small">
+				<th><%= link_to 'View All Artists', artists_path, class: "btn btn-default btn-xs" %></th>
+				<th><%= link_to 'View All Record Labels', record_labels_path, class: "btn btn-default btn-xs" %></th>
+				<th><%= link_to 'View All Songs', songs_path, class: "btn btn-default btn-xs" %></th>
+			</tr>
+</table>
+			<!-- can't run without some values pluggeed in first.  need to test for null? -->
+			
+
+</div>
