@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
   resources :users do
       resources :profiles
-    end
+  end
+
+  resources :wineries do
+      resources :reviews
+  end
 
   resources :profiles
   resources :wineries

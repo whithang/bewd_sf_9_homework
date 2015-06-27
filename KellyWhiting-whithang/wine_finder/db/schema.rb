@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627034305) do
+ActiveRecord::Schema.define(version: 20150627225653) do
 
   create_table "memories", force: :cascade do |t|
     t.string   "name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150627034305) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "winery_id"
+    t.string   "photo"
   end
 
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"

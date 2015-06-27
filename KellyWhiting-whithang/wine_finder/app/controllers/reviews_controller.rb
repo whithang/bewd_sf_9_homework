@@ -1,14 +1,19 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
+
 	def index
       @reviews = Review.all
   end
 
 	def new
       @review = Review.new
+      @winery = Winery.find(params[:winery_id])
 	end
 
   def create
     @review = Review.new(review_params)
+    render "wineries/show"
+    # want this to go back to the winery we were just on
   end
 
 	def edit

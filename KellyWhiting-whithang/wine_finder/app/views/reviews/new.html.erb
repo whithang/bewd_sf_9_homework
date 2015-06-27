@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6"> 
+			<h1>My Review for <i><%= @winery.name %></i></h1>
+
+			<%= simple_form_for @review do |f| %>
+
+				<%= f.input :comment, label: "Thoughts, Likes, Dislikes..." %>
+				<%= f.input :rating, label: "Star Rating: 1 to 5" %>
+				<!-- fix to make this only 1 thru 5 options -->
+				<%= f.input :photo, as: :file, label: "My Photographic Memory" %>
+				<%= f.hidden_field :user_id, value: params[:user_id] %> 
+				<%= f.hidden_field :winery_id, value: params[:winery_id] %>
+				<%= f.submit "Submit My Review"%>
+
+			<% end %>
+			<br><br>
+		</div>
+	</div>
+</div>
+<p><%= javascript_include_tag "application" %> </p>

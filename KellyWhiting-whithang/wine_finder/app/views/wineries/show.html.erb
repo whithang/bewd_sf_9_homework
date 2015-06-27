@@ -6,43 +6,67 @@
 			<tr class="small">
 						<td style="width:20%"><ul><%= image_tag(@winery.photo, size: "100x50", :class => 'img-rounded img-responsive') unless @winery.photo.nil? %>
 						 </td>
-						 <td><%= @winery.street %><br>
+						 <td style="width:30%"><%= @winery.street %><br>
 						 	<%= @winery.city + ", " + @winery.state + " " + @winery.zip.to_s %><br>
 						 	</ul>
+						</td>
+						<td style="width:50%">
+							<!-- if statement to show your review if you have one -->
+							<h1><center>Have you been here?  <%= link_to "Add Your Review", new_winery_review_path(@winery), class: 'btn btn-primary' %></center></h1>
 						</td>
 			</tr>
 	</table>
 </p>
 
-<p>About the Winery: <%= @winery.bio %><br><br>
-	Contact Info: <%= @winery.phone[0...3] +"."+ @winery.phone[3...6]+ "."+ @winery.phone[6...10] %><br><%= @winery.email %><br><%= @winery.website %>
-	<br><br>
-	Tasting Room Hours: <%= @winery.open.to_s " to " + @winery.close.to_s %><br>
-	<% if @winery.appointment == true %>
-		<%= "     By Appointment Only" %><br>
-	<% end %>
-	Tasting Room Fee: <%= "$" + @winery.fee.to_s %><br><br>
-	Extras: <br>
-	<%= "     Pets Allowed: " + @winery.pets.to_s %><br>
-	<%= "     Picnic Area: " + @winery.picnic.to_s %><br>
+<p>
+
+	<table class="table table-striped table-hover">
+		
+			<tr class="small">
+				<td style="width:50%"><ul>
+					<b>About the Winery: </b><%= @winery.bio %><br><br>
+					<b>Contact Info: </b>
+					<% if @winery.phone == nil %>
+						No phone number
+					<% else %>
+						<%= @winery.phone[0...3] +"."+ @winery.phone[3...6]+ "."+ @winery.phone[6...10] %>
+					<% end %>
+					<br>
+					<% if @winery.email != nil %>
+						<%= "              " + @winery.email %><br><%= @winery.website %>
+					<% end %>
+					<br><br>
+					<b>Tasting Room Hours: </b>
+					<% if (@winery.open || @winery.close) == nil %>
+						Call for Hours
+					<% else %>
+						<%= @winery.open.strftime("%I:%M %p") + " to " + @winery.close.strftime("%I:%M %p") %>
+					<% end %>
+					<br>
+					<% if @winery.appointment == true %>
+						<%= "     By Appointment Only" %><br>
+					<% end %>
+					<br>
+					<b>Tasting Room Fee: </b><%= "$" + number_with_precision(@winery.fee, :precision => 2) %><br><br>
+					<b>Good to Know: </b><br>
+					<%= "     Pets Allowed: " + @winery.pets.to_s %><br>
+					<%= "     Picnic Area: " + @winery.picnic.to_s %><br>
+				</td>
+				<td>
+					<h4><b><center>Reviews by Your Friends</center></b></h4><br><br>
+						<% @winery.reviews.each do |review| %>
+					<tr class="small">
+						<td><%= review.comment %>
+							<br>
+						</td>
+						<% end %>
+					</tr>
+				</td>
+			</tr>	
+	</table>
 </p>
 
-<table class="table table-striped table-hover">
-			<tr class="large">
-				<th><h1>Reviews</h1></th>
-				<th></th>
-			</tr>
-				<% @winery.reviews.each do |review| %>
-			<tr class="small">
-				
-				<td><%= review.comment %>
-				<br>
-				</td>
-				<% end %>
-			</tr>
-</table>
 
 
-<%= link_to "Add New Review", new_review_path(@winery.id), class: 'btn btn-primary' %>
 
     
