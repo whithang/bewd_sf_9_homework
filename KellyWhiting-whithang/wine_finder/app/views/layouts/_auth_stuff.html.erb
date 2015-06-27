@@ -1,16 +1,10 @@
-<p>
-	<% if notice %>
-		<p class="notice"><%= notice %></p>
-	<% end %>
-	<% if alert %>
-    <p class="alert"><%= alert %></p>
-   <% end %>
+<div class="container-fluid" align="right">
    <!-- if on login page, don't show -->
 	<% if user_signed_in? %>
-      <%= "User: #{current_user.try(:email)}" %>
+      <font color="white"><span class="glyphicon glyphicon-user"></span><%= "User: #{current_user.try(:email)}" %></font>
       <br><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
     <% else %>
       <%= link_to "Sign In", new_user_session_path %>
       |   <%= link_to "Sign Up", new_user_registration_path %>
   <% end %>
-</p>
+</div>

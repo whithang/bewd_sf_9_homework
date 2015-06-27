@@ -1,5 +1,8 @@
 class WineriesController < ApplicationController
+  # before_action :authenticate_user!
+
 	def index
+
       @wineries = Winery.all
   end
 
@@ -42,7 +45,7 @@ class WineriesController < ApplicationController
   private
 
   def winery_params
-  	params.require(:winery).permit(:name, :bio, :founded_date, :street, :city, :state, :zip, :photo)
+  	params.require(:winery).permit(:name, :bio, :street, :city, :state, :zip, :photo, :phone, :email, :appointment, :pets, :picnic, :fee, :open, :close, :website)
   end
 
   def get_winery

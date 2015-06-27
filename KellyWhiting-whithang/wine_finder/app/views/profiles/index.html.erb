@@ -1,0 +1,14 @@
+<h1> <%= @profile.first_name %>\'s Profile </h1>
+
+<p>Name: <%= @profile.first_name + " " + @profile.last_name %><br><br>
+	About Me: <%= @profile.bio %> <br><br>
+	Birth Date: <%= @profile.birth_date %>
+	<br><br>
+	Address: <%= @profile.street %><br>
+	<%= @profile.city + ", " + @profile.state + " " + @profile.zip.to_s %><br><br>
+	Profile Photo: <%= image_tag(@profile.photo, :class => 'img-thumbnail img-rounded img-responsive') unless @profile.photo.nil? %><br>
+</p>
+<%= link_to "Edit Profile", edit_profile_path(@profile), class: 'btn btn-info' %>
+
+<%= link_to "Home", "/", class: 'btn btn-primary' %>
+<p><%= javascript_include_tag "application" %> </p>

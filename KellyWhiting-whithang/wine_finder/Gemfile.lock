@@ -56,6 +56,11 @@ GEM
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -148,6 +153,10 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    simple_form_fancy_uploads (0.2.0)
+      carrierwave
+      rails (>= 4.0.0)
+      simple_form (~> 3.1)
     slop (3.6.0)
     sprockets (3.2.0)
       rack (~> 1.0)
@@ -176,6 +185,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.5)
   byebug
+  carrierwave
   coffee-rails (~> 4.1.0)
   devise
   jbuilder (~> 2.0)
@@ -185,5 +195,9 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form
+  simple_form_fancy_uploads
   sqlite3
   uglifier (>= 1.3.0)
+
+BUNDLED WITH
+   1.10.5

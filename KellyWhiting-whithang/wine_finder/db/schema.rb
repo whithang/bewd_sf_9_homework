@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625012603) do
+ActiveRecord::Schema.define(version: 20150627034305) do
 
   create_table "memories", force: :cascade do |t|
     t.string   "name"
@@ -73,14 +73,22 @@ ActiveRecord::Schema.define(version: 20150625012603) do
   create_table "wineries", force: :cascade do |t|
     t.string   "name"
     t.text     "bio"
-    t.date     "founded_date"
     t.string   "street"
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
     t.string   "photo"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "phone"
+    t.string   "email"
+    t.boolean  "appointment"
+    t.boolean  "pets"
+    t.boolean  "picnic"
+    t.float    "fee"
+    t.time     "open"
+    t.time     "close"
+    t.string   "website"
   end
 
 end

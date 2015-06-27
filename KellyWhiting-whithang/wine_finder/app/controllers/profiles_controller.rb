@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
 	def index
+    if params[:user_id]
+      @profile = Profile.where(user_id: params[:user_id])
+    else
       @profiles = Profile.all
+    end
   end
 
 	def new
@@ -9,6 +13,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
+    render :index
   end
 
 	def edit
@@ -39,7 +44,7 @@ class ProfilesController < ApplicationController
   	params.require(:profile).permit(:user_id, :first_name, :last_name, :bio, :birth_date, :street, :city, :state, :zip, :photo)
   end
 
-  def get_user
-  	Profile.find(params[:id])
+  def get_profile
+  	Profile.find(params[:user_id])
   end
 end
