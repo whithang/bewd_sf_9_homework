@@ -1,6 +1,7 @@
-<h1> <%= @profile.first_name %>\'s Profile </h1>
+<h1> <%= @profile.first_name %>'s Profile </h1>
 
-<p>Name: <%= @profile.first_name + " " + @profile.last_name %><br><br>
+<p>Full Name: <%= @profile.first_name + " " + @profile.last_name %><br><br>
+	Email: <%= @profile.user.email %> <br><br>
 	About Me: <%= @profile.bio %> <br><br>
 	Birth Date: <%= @profile.birth_date %>
 	<br><br>
@@ -10,5 +11,4 @@
 </p>
 <%= link_to "Edit Profile", edit_profile_path(@profile), class: 'btn btn-info' %>
 
-<%= link_to "Home", "/", class: 'btn btn-primary' %>
 <p><%= javascript_include_tag "application" %> </p>

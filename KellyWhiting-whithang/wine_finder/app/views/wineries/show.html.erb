@@ -10,9 +10,12 @@
 						 	<%= @winery.city + ", " + @winery.state + " " + @winery.zip.to_s %><br>
 						 	</ul>
 						</td>
-						<td style="width:50%">
-							<!-- if statement to show your review if you have one -->
-							<h1><center>Have you been here?  <%= link_to "Add Your Review", new_winery_review_path(@winery), class: 'btn btn-primary' %></center></h1>
+						<td>
+							<% if @existing_review %>
+								<%= render 'wineries/has_review' %>
+							<% else %>
+								<%= render 'wineries/no_review' %>
+							<% end %>
 						</td>
 			</tr>
 	</table>
@@ -53,14 +56,8 @@
 					<%= "     Picnic Area: " + @winery.picnic.to_s %><br>
 				</td>
 				<td>
-					<h4><b><center>Reviews by Your Friends</center></b></h4><br><br>
-						<% @winery.reviews.each do |review| %>
-					<tr class="small">
-						<td><%= review.comment %>
-							<br>
-						</td>
-						<% end %>
-					</tr>
+					
+					<%= render "wineries/friends_reviews" %>
 				</td>
 			</tr>	
 	</table>

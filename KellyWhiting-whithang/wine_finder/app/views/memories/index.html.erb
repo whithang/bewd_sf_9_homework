@@ -1,0 +1,29 @@
+<h1 style="color:#000000;">My Memories</h1>
+<p>
+	<table class="table table-striped table-hover">
+		<tr class="small">
+					<th></th>
+					<th style="width:10%">Name </th>
+					<th style="width:20%">Trip Dates </th>
+					<th></th>
+					<th style="width:100%">Details </th>
+				</tr>
+			<% @memories.each do |memory| %>
+			
+				<tr>
+				 <td style="width:10%"><%= link_to "#{memory.name}", memory_path(memory) %></td>
+				 <td style="width:20%">
+				 	<%= memory.trip_date.strftime("%B %e %Y") unless memory.trip_date.nil? %></td>
+				 	<td> to 
+				 		<%= memory.trip_date_end.strftime("%B %e %Y") unless memory.trip_date_end.nil? %>
+				 	</td>
+				 	<td>
+				 		<!-- insert memory_details -->
+				 	</td>
+				<td><%= link_to "Edit Memory", edit_memory_path(memory), class: 'btn btn-info' %>
+				</td>
+			
+			<% end %>
+	</table>
+</p>
+<p><%= javascript_include_tag "application" %> </p>

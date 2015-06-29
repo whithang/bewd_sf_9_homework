@@ -29,6 +29,7 @@ class ArtistsController < ApplicationController
   def update
     @artist = get_artist
     if @artist.update_attributes(artist_params)
+      # missing code for update_attributes method
     else
       render 'edit'
     end

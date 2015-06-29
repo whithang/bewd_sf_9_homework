@@ -1,0 +1,14 @@
+<h4><b><center>Reviews by Your Friends</center></b></h4><br><br>
+
+				<table>
+						<% @winery.reviews.each do |review| %>
+						<% if review.user_id != current_user.id %>
+					<tr class="small">
+						<td><ul>
+							<b><%= review.user.profile.first_name + " " + review.user.profile.last_name + "'s Review:" %></b>&emsp; <%= review.comment %>
+							</ul>
+						</td>
+						<% end %>
+						<% end %>
+					</tr>
+				</table>

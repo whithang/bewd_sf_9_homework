@@ -1,8 +1,12 @@
 class MemoriesController < ApplicationController
   before_action :authenticate_user!
-  
+
 	def index
+    if params[:user_id] 
+      @memories = Memory.where(user_id: params[:user_id])
+    else
       @memories = Memory.all
+    end 
   end
 
 	def new
@@ -19,7 +23,8 @@ class MemoriesController < ApplicationController
 
   def update
     @memory = get_memory
-    if @memory.update_attributes(memory_params)
+    if @memory.update_attributes(memory_params) 
+      redirect_to memory_path(@memory), notice: "Your Memory was updated successfully"
     else
       render 'edit'
     end
@@ -27,6 +32,7 @@ class MemoriesController < ApplicationController
  	
  	def show
  		@memory = get_memory
+
   end
 
 	def destroy

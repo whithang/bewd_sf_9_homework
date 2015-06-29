@@ -25,6 +25,7 @@ def index
   def update
     @record_label = get_record_label
     if @record_label.update_attributes(record_label_params)
+      # missing code for update_attributes method
     else
       render 'edit'
     end

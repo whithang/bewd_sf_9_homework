@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notes: MyString
+  visited: false
+  visited_date: 2015-06-29
+
+two:
+  notes: MyString
+  visited: false
+  visited_date: 2015-06-29

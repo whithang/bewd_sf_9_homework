@@ -1,5 +1,4 @@
 class WineriesController < ApplicationController
-  # before_action :authenticate_user!
 
 	def index
 
@@ -21,6 +20,7 @@ class WineriesController < ApplicationController
   def update
     @winery = get_winery
     if @winery.update_attributes(winery_params)
+      redirect_to wineries_path(@winery, notice: "Winery updated successfully")
     else
       render 'edit'
     end
@@ -28,6 +28,8 @@ class WineriesController < ApplicationController
  	
  	def show
  		@winery = get_winery
+    @existing_review = @winery.reviews.exists?(:user_id => current_user.id)
+    # @friends_review = @winery.reviews.exists?(:user_id => current_user.id)
   end
 
   def search

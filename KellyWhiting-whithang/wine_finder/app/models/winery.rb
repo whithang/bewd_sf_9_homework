@@ -1,6 +1,6 @@
 class Winery < ActiveRecord::Base
 	has_many :reviews, dependent: :destroy
-	has_and_belongs_to_many :memories
+	belongs_to :memory_details
 
 	validates_presence_of :name
 end

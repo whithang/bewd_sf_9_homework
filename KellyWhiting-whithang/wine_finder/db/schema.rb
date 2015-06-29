@@ -11,17 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627225653) do
+ActiveRecord::Schema.define(version: 20150629071142) do
 
   create_table "memories", force: :cascade do |t|
     t.string   "name"
     t.date     "trip_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.date     "trip_date_end"
   end
 
   add_index "memories", ["user_id"], name: "index_memories_on_user_id"
+
+  create_table "memory_details", force: :cascade do |t|
+    t.string   "notes"
+    t.boolean  "visited"
+    t.date     "visited_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "winery_id"
+    t.integer  "memory_id"
+  end
+
+  add_index "memory_details", ["memory_id"], name: "index_memory_details_on_memory_id"
+  add_index "memory_details", ["winery_id"], name: "index_memory_details_on_winery_id"
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"

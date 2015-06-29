@@ -1,0 +1,23 @@
+<h4><center>Your Reviews  </center></h4>
+<br>
+					<table>
+						<tr>
+							<th style="width:30%"><center>Created Date </center></th>
+							<th style="width:50%"><center>Rating </center></th>
+							<th style="width:100%"><center>Comments </center></th>
+						</tr>
+						<% @winery.reviews.each do |review| %>
+						<% if review.user_id == current_user.id %>
+					<tr align="center">
+						<td style="width:30%">
+							<%= review.created_at.strftime("%B %e %Y") %></td>
+							<td style="width:50%"><%= review.rating.to_s + " Stars" %></td>
+							<td style="width:100%"><%= review.comment %></td>
+							
+						</td>
+					</tr>
+						<% end %>
+					<% end %>
+				</table>
+		<br>
+<center><%= link_to "Add Another Review", new_winery_review_path(@winery), class: 'btn btn-primary' %></center>

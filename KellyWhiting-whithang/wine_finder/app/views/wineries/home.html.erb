@@ -1,10 +1,11 @@
 
 
-<h1><%= image_tag('WineGlasses.jpg', size: '100') %>Welcome to the Ultimate Wine Country Trip Planner</h1>
+<h1><center>Welcome to the Ultimate Wine Country Trip Planner</center></h1>
 <div class="col-md-12">
 	<div class="table-responsive" align="center">
 		<h1 style="color:#000000;"><i>We are here to help you Create Memories</i></h1>
-		<p>Where do you want to find tasting rooms?
+    <br><%= image_tag('WineGlasses.jpg', size: '100') %>
+		<p><br>Where do you want to find tasting rooms?
       <br><br>
 
       <%= form_tag("wineries/search", method: "post") do %>

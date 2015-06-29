@@ -7,11 +7,12 @@
 
 			<%= f.input :first_name %>
 			<%= f.input :last_name %>
+			<!-- alternate email? -->
 			<%= f.input :bio, label: "About Me"%>
 			<%= f.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:month, :day, :year] %>
 			<%= f.input :street, label: "Street address"%>
 			<%= f.input :city %>
-			<%= f.input :state %>
+			<%= f.input :state  %>
 			<%= f.input :zip %>
 			<%= f.input :photo, as: :file, label: "Profile photo" %>
 			<%= f.hidden_field :user_id, value: params[:user_id] %> 

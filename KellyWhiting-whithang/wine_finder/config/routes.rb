@@ -11,17 +11,22 @@ Rails.application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
   resources :users do
-      resources :profiles
+    resources :profiles
   end
 
   resources :wineries do
-      resources :reviews
+    resources :reviews
+  end
+
+  resources :users do
+    resources :memories
   end
 
   resources :profiles
   resources :wineries
   resources :memories
   resources :reviews
+  resources :memory_details
 
   devise_scope :user do
       get "/signin", to: "devise/sessions#new", as: "sign_in"

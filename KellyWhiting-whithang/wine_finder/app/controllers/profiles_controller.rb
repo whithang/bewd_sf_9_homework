@@ -1,9 +1,9 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  
+
 	def index
-    if params[:user_id]
-      @profile = Profile.where(user_id: params[:user_id])
+    if params[:user_id] 
+      @profile = Profile.where(user_id: params[:user_id]).first
     else
       @profiles = Profile.all
     end
@@ -15,7 +15,11 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    render :index
+    if @profile.save
+      redirect_to user_profiles_path(@profile.user), notice: "Your Profile was created successfully"
+    else
+      render "new"
+    end
   end
 
 	def edit
@@ -24,7 +28,9 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = get_profile
+    
     if @profile.update_attributes(profile_params)
+      render 'index'
     else
       render 'edit'
     end
@@ -47,6 +53,7 @@ class ProfilesController < ApplicationController
   end
 
   def get_profile
-  	Profile.find(params[:user_id])
+  	Profile.find(params[:id])
   end
+
 end

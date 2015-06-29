@@ -3,17 +3,25 @@ class ReviewsController < ApplicationController
 
 	def index
       @reviews = Review.all
+      @has_reviews = @reviews.exists?(:user_id => current_user.id)
+      if @has_reviews
+        @my_reviews = @reviews.find(:user_id => current_user.id)
+      end
   end
 
 	def new
       @review = Review.new
       @winery = Winery.find(params[:winery_id])
+      @user = current_user
 	end
 
   def create
     @review = Review.new(review_params)
-    render "wineries/show"
-    # want this to go back to the winery we were just on
+    if @review.save
+      redirect_to winery_path(@review.winery), notice: "New Review successfully added"
+    else
+      render "new"
+    end
   end
 
 	def edit
@@ -23,6 +31,7 @@ class ReviewsController < ApplicationController
   def update
     @review = get_review
     if @review.update_attributes(review_params)
+      redirect_to reviews_path, notice: "Your Review was updated successfully"
     else
       render 'edit'
     end

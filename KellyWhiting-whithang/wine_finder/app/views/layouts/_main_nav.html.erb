@@ -2,6 +2,7 @@
   <div class="container-fluid">
     
     <ul class="nav navbar-nav">
+      <li><%= image_tag('WineGlasses.jpg', size: '50') %></li>
       <li><a href=<%= wineries_path %>>Wineries</a></li>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -21,8 +22,8 @@
               <a href=<%= new_user_profile_path(current_user.id) %>>Create Profile</a>
             <% end %>
           </li>
-          <li><a href=<%= memories_path(current_user.id) %>>My Memories</a></li>
-          <li><a href=<%= reviews_path(current_user.id) %>>My Reviews</a></li>
+          <li><a href=<%= user_memories_path(current_user.id) %>>My Memories</a></li>
+          <li><a href=<%= reviews_path %>>My Reviews</a></li>
           <!-- <li role="separator" class="divider"></li>
           <li><a href="#">Separated link</a></li>
           <li role="separator" class="divider"></li>

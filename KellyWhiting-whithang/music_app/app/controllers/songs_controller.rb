@@ -28,6 +28,7 @@ class SongsController < ApplicationController
   def update
     @song = get_song
     if @song.update_attributes(song_params)
+      # missing code for update_attributes method
     else
       render 'edit'
     end
