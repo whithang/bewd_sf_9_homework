@@ -5,11 +5,12 @@ class UsersController < ApplicationController
 
 	def new
       @user = User.new
-      @memory = Memory.create(name:"Wish List", user_id:@user.id)  
+
 	end
 
   def create
     @user = User.new(user_params)
+    
   end
 
 	def edit
