@@ -29,10 +29,19 @@ class MemoriesController < ApplicationController
       render 'edit'
     end
   end
+
+  # def select
+  #   @memory = Memory.new
+  #   if current_user
+  #     @memories = Memory.where(user_id: current_user)
+  #     @winery = Winery.find(params[:winery])
+  #   end
+  # end
  	
  	def show
  		@memory = get_memory
-
+    # @memory_details = MemoryDetail.where(memory_id: @memory)
+    # @winery = Winery.where(id: @memory)
   end
 
 	def destroy

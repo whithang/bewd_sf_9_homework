@@ -3,16 +3,21 @@
 		<div class="col-md-6"> 
 			
 			<h1>Add <i><%= @winery.name %></i> to a Memory</h1>
-
+<!-- @winery.try(:name) -->
 			<%= simple_form_for @memory_detail do |f| %>
-				<%= f.input :memory_id, label: "Add to my Memory for: " %>
+				<%= f.association :memory, collection: Memory.all.where(user_id: current_user), label: "Add to my Memory for: " %>
 				<%= f.input :notes, label: "What I want to remember about this winery..." %>
-				<%= f.input :visited, label: "I have visited this winery before: " %>
+				<%= f.input :visited, label: "I have visited this winery before " %>
 				<%= f.input :visited_date %>
-				<%= f.hidden_field :winery_id, value: params[:winery_id] %>
-				<%= f.submit "Submit My Review"%>
+				<!-- make visited date appear if above is selected -->
+				<%= f.hidden_field :winery_id, value: params[:winery] %>
+				<%= f.submit "Yay!"%>
 
 			<% end %>
+
+				<br><center>or <br>
+				<h3><%= link_to "Create a New Memory", new_winery_memory_path(@winery) %> </h3></center> 
+
 			<br><br>
 		</div>
 	</div>

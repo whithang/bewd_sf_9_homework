@@ -13,9 +13,10 @@
 				<tr>
 				 <td style="width:10%"><%= link_to "#{memory.name}", memory_path(memory) %></td>
 				 <td style="width:20%">
-				 	<%= memory.trip_date.strftime("%B %e %Y") unless memory.trip_date.nil? %></td>
-				 	<td> to 
+				 	<% if memory.trip_date != nil %>
+				 		<%= memory.trip_date.strftime("%B %e %Y") %> to 
 				 		<%= memory.trip_date_end.strftime("%B %e %Y") unless memory.trip_date_end.nil? %>
+				 		<% end %>
 				 	</td>
 				 	<td>
 				 		<!-- insert memory_details -->

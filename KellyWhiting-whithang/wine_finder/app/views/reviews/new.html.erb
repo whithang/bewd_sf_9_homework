@@ -6,8 +6,7 @@
 			<%= simple_form_for @review do |f| %>
 
 				<%= f.input :comment, label: "Thoughts, Likes, Dislikes..." %>
-				<%= f.input :rating, label: "Star Rating: 1 to 5" %>
-				<!-- fix to make this only 1 thru 5 options -->
+				<%= f.input :rating, :collection => 1..5, :as => :radio, label: "Star Rating: " %>
 				<%= f.input :photo, as: :file, label: "My Photographic Memory" %>
 				<%= f.hidden_field :user_id, value: @user.id %> 
 				<%= f.hidden_field :winery_id, value: params[:winery_id] %>

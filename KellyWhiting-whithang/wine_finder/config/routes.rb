@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   root 'wineries#home'
 
+  # get "memories/select", to: "memories#select", as: :memory_select
+
   post "/wineries/search", to: "wineries#search", as: :winery_search
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -20,6 +22,15 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :memories
+  end
+
+  resources :wineries do
+    resources :memories
+    resources :memory_details
+  end
+
+  resources :memories do
+    resources :memory_details
   end
 
   resources :profiles

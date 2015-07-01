@@ -7,10 +7,18 @@ class MemoryDetailsController < ApplicationController
 
 	def new 
       @memory_detail = MemoryDetail.new
+      @winery = Winery.find(params[:winery])
+
 	end
 
   def create
-    @memory_detail = MemoryDetail.new(memorydetail_params)
+    @memory_detail = MemoryDetail.new(memory_detail_params)
+
+    if @memory_detail.save
+      redirect_to memory_path(@memory_detail.memory_id), notice: "Your Memory was added successfully"
+    else
+      render "new"
+    end
   end
 
 	def edit
@@ -25,6 +33,13 @@ class MemoryDetailsController < ApplicationController
       render 'edit'
     end
   end
+
+  # def select
+  #   @memory_detail = MemoryDetail.new
+  #   if current_user
+  #     @winery = Winery.find(params[:winery])
+  #   end
+  # end
  	
  	def show
  		@memory_detail = get_memory_detail

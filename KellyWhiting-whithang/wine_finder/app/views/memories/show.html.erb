@@ -1,0 +1,35 @@
+<p><%= javascript_include_tag "application" %> </p>
+<h1 style="color:#000000;"><%= @memory.name %></h1>
+<p>
+	<table class="table table-striped table-hover">
+		
+			<tr class="small">
+						<td style="width:20%"><ul>
+							<% if @memory.trip_date != nil %>
+				 		<%= @memory.trip_date.strftime("%B %e %Y") %> to 
+				 		<%= @memory.trip_date_end.strftime("%B %e %Y") unless @memory.trip_date_end.nil? %>
+				 		<% end %>
+						 	</ul>
+						</td>
+			</tr>
+			<tr>
+				<th>Winery </th>
+				<th>Notes </th>
+				<th>Visited Before</th>
+			</tr>
+				<% @memory.memory_details.each do |detail| %>
+					<tr class="small">
+						<td><ul>
+							<b><%= Winery.where(id: detail.winery_id).name %></b>
+							</ul>
+						</td>
+						<td><%= detail.notes %>
+						</td>
+						<td><% if detail.visited == true %>
+							<%= detail.visited_date.strftime("%B %e %Y") %>
+							<% end %>
+						</td>
+						<% end %>
+			</tr>	
+	</table>
+</p>
