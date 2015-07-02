@@ -7,15 +7,20 @@ class MemoryDetailsController < ApplicationController
 
 	def new 
       @memory_detail = MemoryDetail.new
-      @winery = Winery.find(params[:winery])
-
+      if params[:winery]
+        @winery = Winery.find(params[:winery]) 
+# this is correct param when coming from winery/index
+      else
+        @winery = Winery.find(params[:winery_id])
+# error when coming from new memory creation
+      end 
 	end
 
   def create
     @memory_detail = MemoryDetail.new(memory_detail_params)
 
     if @memory_detail.save
-      redirect_to memory_path(@memory_detail.memory_id), notice: "Your Memory was added successfully"
+      redirect_to memory_path(@memory_detail.memory_id), notice: "Your Memory was updated successfully"
     else
       render "new"
     end

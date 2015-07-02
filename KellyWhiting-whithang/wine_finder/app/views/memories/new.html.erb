@@ -1,15 +1,14 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6"> 
+		<div class="col-md-8"> 
 			
-			<h1>Add <i><%= @winery.name %></i> to a Memory</h1>
+			<h1>Create a New Memory </h1>
 
 			<%= simple_form_for @memory do |f| %>
 				<%= f.input :name, label: "Memory for: " %>
-				<%= f.input :trip_date, label: "Memory Start: " %>
-				<%= f.input :trip_date_end, label: "Memory Finish: " %>
-				<%= f.input :visited_date %>
-				<%= f.hidden_field :user_id, value: params[:memory.user_id] %>
+				<%= f.input :trip_date, label: "Memory Start: ", :include_blank => true %>
+				<%= f.input :trip_date_end, label: "Memory Finish: ", :include_blank => true %>
+				<%= f.hidden_field :user_id, value: current_user.id %>
 				<%= f.hidden_field :winery_id, value: @winery.id %>
 				<%= f.submit "Create a Memory"%>
 

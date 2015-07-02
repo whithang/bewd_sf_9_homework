@@ -1,0 +1,21 @@
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8"> 
+				<h1>Edit My Review for <i><%= @review.winery.name %></i></h1>
+					<p>Update any fields you want to edit:</p>
+
+					<%= simple_form_for @review do |f| %>
+
+						<%= f.input :comment, label: "Thoughts, Likes, Dislikes..." %>
+						<%= f.input :rating, :collection => 1..5, label: "Star Rating: " %>
+						<%= f.input :photo, as: :file, label: "My Photographic Memory" %>
+						<%= f.hidden_field :user_id, value: current_user.id %> 
+						<%= f.hidden_field :winery_id, value: @review.winery.id %>
+						<%= f.submit "Submit Updated Review"%>
+
+					<% end %>
+				</div>
+			</div>
+		</div>
+
+	<p><%= javascript_include_tag "application" %> </p>

@@ -2,8 +2,8 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
 	def index
-    if params[:user_id] 
-      @profile = Profile.where(user_id: params[:user_id]).first
+    if current_user
+      @profile = Profile.where(user_id: current_user.id).first
     else
       @profiles = Profile.all
     end

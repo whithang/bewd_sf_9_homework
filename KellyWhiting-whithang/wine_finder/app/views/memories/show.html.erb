@@ -6,8 +6,8 @@
 			<tr class="small">
 						<td style="width:20%"><ul>
 							<% if @memory.trip_date != nil %>
-				 		<%= @memory.trip_date.strftime("%B %e %Y") %> to 
-				 		<%= @memory.trip_date_end.strftime("%B %e %Y") unless @memory.trip_date_end.nil? %>
+				 		<%= @memory.trip_date.strftime("%B %e %Y") %> 
+				 		<%= " to " + @memory.trip_date_end.strftime("%B %e %Y") unless @memory.trip_date_end.nil? %>
 				 		<% end %>
 						 	</ul>
 						</td>
@@ -20,15 +20,17 @@
 				<% @memory.memory_details.each do |detail| %>
 					<tr class="small">
 						<td><ul>
-							<b><%= Winery.where(id: detail.winery_id).name %></b>
+							<b><%= link_to Winery.where(id: detail.winery_id).first.name, winery_path(detail.winery_id) %></b>
 							</ul>
 						</td>
 						<td><%= detail.notes %>
 						</td>
 						<td><% if detail.visited == true %>
-							<%= detail.visited_date.strftime("%B %e %Y") %>
+							<%= detail.visited_date.strftime("%B %e %Y") unless detail.visited_date.nil?%>
 							<% end %>
 						</td>
+						<td><%= link_to "Edit Memory Detail", edit_memory_detail_path(detail), class: 'btn btn-info' %>
+				</td>
 						<% end %>
 			</tr>	
 	</table>

@@ -1,6 +1,7 @@
 <h4><b><center>Reviews by Your Friends</center></b></h4><br><br>
 
 				<table>
+					<% if current_user %>
 						<% @winery.reviews.each do |review| %>
 						<% if review.user_id != current_user.id %>
 					<tr class="small">
@@ -11,4 +12,5 @@
 						<% end %>
 						<% end %>
 					</tr>
+					<% end %>
 				</table>

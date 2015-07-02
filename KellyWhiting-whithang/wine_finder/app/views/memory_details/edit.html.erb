@@ -1,0 +1,24 @@
+<div class="container">
+		<div class="row">
+			<div class="col-md-8"> 
+				<center><h1>Edit <%=@memory_detail.memory.name %> Memory  </h1>
+				<br>for<br><br>
+				<h3><b> <%= Winery.where(id: @memory_detail[:winery_id]).first
+.name %></h3></b></center><br>
+					<p>Update any fields you want to edit:</p>
+
+					<%= simple_form_for @memory_detail do |f| %>
+
+						<%= f.input :notes, label: "What I want to remember about this winery..." %>
+						<%= f.input :visited, label: "I have visited this winery before " %>
+						<%= f.input :visited_date, label: "Visit date:", :include_blank => true %>
+						<!-- make visited date appear if above is selected -->
+						<%= f.hidden_field :winery_id, value: @memory_detail[:winery_id] %>
+						<%= f.submit "Yay!"%>
+
+					<% end %>
+				</div>
+			</div>
+		</div>
+
+	<p><%= javascript_include_tag "application" %> </p>

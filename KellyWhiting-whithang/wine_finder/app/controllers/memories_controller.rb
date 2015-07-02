@@ -2,8 +2,8 @@ class MemoriesController < ApplicationController
   before_action :authenticate_user!
 
 	def index
-    if params[:user_id] 
-      @memories = Memory.where(user_id: params[:user_id])
+    if current_user
+      @memories = Memory.where(user_id: current_user.id)
     else
       @memories = Memory.all
     end 
@@ -11,10 +11,19 @@ class MemoriesController < ApplicationController
 
 	def new
       @memory = Memory.new
+      @winery = Winery.where(id: params[:winery_id]).first
 	end
 
   def create
+
     @memory = Memory.new(memory_params)
+    @winery = Winery.where(id: params[:memory][:winery_id]).first
+
+    if @memory.save
+      redirect_to new_winery_memory_memory_detail_path(@winery, @memory), notice: "Your New Memory was created successfully"
+    else
+      render "new"
+    end
   end
 
 	def edit
@@ -53,7 +62,7 @@ class MemoriesController < ApplicationController
   private
 
   def memory_params
-  	params.require(:memory).permit(:user_id, :name, :trip_date)
+  	params.require(:memory).permit(:user_id, :name, :trip_date, :trip_date_end)
   end
 
   def get_memory

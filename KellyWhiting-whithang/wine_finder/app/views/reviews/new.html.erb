@@ -1,15 +1,15 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6"> 
+		<div class="col-md-8"> 
 			<h1>My Review for <i><%= @winery.name %></i></h1>
 
 			<%= simple_form_for @review do |f| %>
 
 				<%= f.input :comment, label: "Thoughts, Likes, Dislikes..." %>
-				<%= f.input :rating, :collection => 1..5, :as => :radio, label: "Star Rating: " %>
+				<%= f.input :rating, :collection => 1..5, label: "Star Rating: " %>
 				<%= f.input :photo, as: :file, label: "My Photographic Memory" %>
 				<%= f.hidden_field :user_id, value: @user.id %> 
-				<%= f.hidden_field :winery_id, value: params[:winery_id] %>
+				<%= f.hidden_field :winery_id, value: params[:memory][:winery_id] %>
 				<%= f.submit "Submit My Review"%>
 
 			<% end %>

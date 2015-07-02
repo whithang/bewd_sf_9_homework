@@ -28,7 +28,11 @@ class WineriesController < ApplicationController
  	
  	def show
  		@winery = get_winery
-    @existing_review = @winery.reviews.exists?(:user_id => current_user.id)
+    if current_user
+      @existing_review = @winery.reviews.exists?(:user_id => current_user.id)
+    else
+      @existing_review = false
+    end
     # @friends_review = @winery.reviews.exists?(:user_id => current_user.id)
   end
 

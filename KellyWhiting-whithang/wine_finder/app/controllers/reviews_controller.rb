@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
       @reviews = Review.all
       @has_reviews = @reviews.exists?(:user_id => current_user.id)
       if @has_reviews
-        @my_reviews = @reviews.find(:user_id => current_user.id)
+        @my_reviews = @reviews.where(user_id: current_user.id)
       end
   end
 
@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = get_review
+    
     if @review.update_attributes(review_params)
       redirect_to reviews_path, notice: "Your Review was updated successfully"
     else

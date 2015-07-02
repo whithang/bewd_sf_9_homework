@@ -1,0 +1,21 @@
+<div class="container">
+		<div class="row">
+			<div class="col-md-8"> 
+				<h1>Edit My Memory </h1>
+					<p>Update any fields you want to edit:</p>
+
+					<%= simple_form_for @memory do |f| %>
+
+						<%= f.input :name, label: "Memory for: " %>
+						<%= f.input :trip_date, label: "Memory Start: ", :include_blank => true %>
+						<%= f.input :trip_date_end, label: "Memory Finish: ", :include_blank => true %>
+						<%= f.hidden_field :user_id, value: @memory.user_id %>
+						<%= f.hidden_field :winery_id, value: @winery.id unless @winery.nil? %>
+						<%= f.submit "Update My Memory"%>	
+
+					<% end %>
+				</div>
+			</div>
+		</div>
+
+	<p><%= javascript_include_tag "application" %> </p>

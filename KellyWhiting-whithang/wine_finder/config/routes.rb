@@ -29,6 +29,13 @@ Rails.application.routes.draw do
     resources :memory_details
   end
 
+  resources :wineries do
+    resources :memories do
+      resources :memory_details
+    end
+  end
+
+
   resources :memories do
     resources :memory_details
   end
