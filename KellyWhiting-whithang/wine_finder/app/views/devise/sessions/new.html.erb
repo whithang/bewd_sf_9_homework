@@ -1,8 +1,10 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-4"> 
+		<div class="col-md-8"> 
 			<!-- 12 is full screen -->
-			<h2>Log in</h2>
+			
+			<br><%= link_to image_tag('button_fbconnect_primary.png', size: '236x50'), "/auth/facebook", id: "sign_in" %><br />
+			<h2>or Log in with Our Community</h2>
 				<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 			  <div class="form-inputs">
 			    <%= f.input :email, required: false, autofocus: true %>

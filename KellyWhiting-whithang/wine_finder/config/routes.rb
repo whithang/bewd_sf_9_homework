@@ -1,8 +1,26 @@
 Rails.application.routes.draw do
+  # get 'fb_sessions/create'
+
+  # get 'fb_sessions/destroy'
+
+  # get 'fb_home/show'
+
+
+  get 'auth/:provider/callback', to: 'fb_sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'fb_sessions#destroy', as: 'signout'
+
   devise_for :users, :controllers => {:registrations => "registrations"}
   # devise_for :users
   
+  devise_scope :user do
+      get "/signin", to: "devise/sessions#new", as: "sign_in"
+      delete "/sign_out", to: "devise/sessions#destroy", as: "sign_out"
+      get "sign_up", to: "devise/registrations#new", as: "sign_up"
+  end
+
   root 'wineries#home'
+  # root to: "fb_home#show"
 
   # get "memories/select", to: "memories#select", as: :memory_select
 
@@ -46,17 +64,10 @@ Rails.application.routes.draw do
   resources :reviews
   resources :memory_details
 
-  devise_scope :user do
-      get "/signin", to: "devise/sessions#new", as: "sign_in"
-      delete "/sign_out", to: "devise/sessions#destroy", as: "sign_out"
-      get "sign_up", to: "devise/registrations#new", as: "sign_up"
-    end
+  resources :fb_sessions, only: [:create, :destroy]
+  
 
-  # devise_scope :user do
-  #   get "/signin", to: "devise/sessions#new", as: "sign_in"
-  #   delete "/sign_out", to: "devise/sessions#destroy", as: "sign_out"
-  #   get "sign_up", to: "devise/registrations#new", as: "sign_up"
-  #  end
+  
 
   # Example resource route with more complex sub-resources:
   #   resources :products do

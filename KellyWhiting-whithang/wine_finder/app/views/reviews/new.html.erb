@@ -9,7 +9,11 @@
 				<%= f.input :rating, :collection => 1..5, label: "Star Rating: " %>
 				<%= f.input :photo, as: :file, label: "My Photographic Memory" %>
 				<%= f.hidden_field :user_id, value: @user.id %> 
-				<%= f.hidden_field :winery_id, value: params[:memory][:winery_id] %>
+				<% if params[:memory]!= nil %>
+					<%= f.hidden_field :winery_id, value: params[:memory][:winery_id] %>
+				<% else %>
+					<%= f.hidden_field :winery_id, value: @winery.id %>
+					<% end %>
 				<%= f.submit "Submit My Review"%>
 
 			<% end %>

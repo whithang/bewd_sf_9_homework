@@ -1,0 +1,21 @@
+<div class="container-fluid" align="right">
+   <!-- if on login page, don't show -->
+
+  <% if user_signed_in? %>
+      <font color="white"><span class="glyphicon glyphicon-user"></span><%= "User: #session.name" %></font>
+      <br><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path %>
+      |   <%= link_to "Sign Up", new_user_registration_path %>
+  <% end %>
+
+
+    <% if current_user %>
+      <font color="white"><span class="glyphicon glyphicon-user"></span>Signed in as <strong><%= session[:user_name] %></strong> | 
+      <%= link_to "Sign out", signout_path, id: "sign_out" %></font>
+    <% else %>
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %> | <%= link_to "Sign in with this App", new_user_session_path, id: "sign_in" %>
+      |   <%= link_to "Sign Up", new_user_registration_path %>
+    <% end %>
+
+ </div>
