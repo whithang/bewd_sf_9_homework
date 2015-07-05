@@ -4,10 +4,15 @@
 			
 			<h1>Create a New Memory </h1>
 
-			<%= simple_form_for @memory do |f| %>
+			<%= simple_form_for @memory, html: {class: 'form-horizontal'} do |f| %>
 				<%= f.input :name, label: "Memory for: " %>
-				<%= f.input :trip_date, label: "Memory Start: ", :include_blank => true %>
-				<%= f.input :trip_date_end, label: "Memory Finish: ", :include_blank => true %>
+				<div class='row datetimerange'>
+					<%= f.input :trip_date, label: "Memory Start: ", as: :date_picker %>
+						<%= f.input :trip_date_end, as: :date_picker, wrapper: :ranged_datetime, label: "Memory End", :include_blank => true %>
+
+
+						<%= f.input :trip_date, as: :date_picker, placeholder: "Start", as: :date_picker  %>
+				</div>
 				<%= f.hidden_field :user_id, value: current_user.id %>
 				<%= f.hidden_field :winery_id, value: @winery.id %>
 				<%= f.submit "Create a Memory"%>

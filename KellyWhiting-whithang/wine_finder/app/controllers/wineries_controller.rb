@@ -39,7 +39,16 @@ class WineriesController < ApplicationController
   def search
   	# @search_address = Winery.find_by_address(params["SearchInput"])
   	# add this method or figure out how to search
-    @wineries = Winery.all
+    # downcase after entry
+    
+    if !params[:city].blank?
+      @city = params[:city]
+      @wineries = Winery.city(@city)
+      render 'search'
+    else
+      @wineries = Winery.all
+      render 'index'
+    end
   end
 
 	def destroy

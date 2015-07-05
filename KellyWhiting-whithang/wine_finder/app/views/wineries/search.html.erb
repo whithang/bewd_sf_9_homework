@@ -1,1 +1,30 @@
-<p>test</p>
+<body>
+<h1 style="color:#000000;">All wineries in the city of <%= @city %></h1>
+<p>
+	<table class="table table-striped table-hover">
+		
+			<% @wineries.each do |winery| %>
+			<tr class="small">
+						<td style="width:5%"><%= link_to image_tag('wine-glass-icon.jpg', size: '30x59'), new_memory_detail_path(winery:winery) %>
+						</td>
+						<!-- <td> for a fb like button
+							<div
+							  class="fb-like"
+							  data-share="true"
+							  data-width="450"
+							  data-show-faces="true">
+							</div>
+						</td> -->
+						<td style="width:20%"><ul><%= image_tag(winery.photo, size: "100x50", :class => 'img-rounded img-responsive') unless winery.photo.nil? %>
+						 </td>
+						 <td><%= link_to "#{winery.name}", winery_path(winery) %><br>
+						 	<%= winery.street %><br>
+						 	<%= winery.city + ", " + winery.state + " " + winery.zip.to_s %><br>
+						 	<%= winery.phone[0...3] +"."+ winery.phone[3...6]+ "."+ winery.phone[6...10] %></ul>
+						</td>
+			</tr>
+			<% end %>
+	</table>
+</p>
+<p><%= javascript_include_tag "application" %> </p>
+</body>

@@ -1,3 +1,19 @@
+GIT
+  remote: git://github.com/derekprior/momentjs-rails.git
+  revision: 85334f46df85cccb4c8fbaf07f0757f57801b9a9
+  specs:
+    momentjs-rails (2.10.3)
+      railties (>= 3.1)
+
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: 36d21cec5da7f5b214925804f60e63c61c747023
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.16)
+      momentjs-rails (>= 2.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -82,6 +98,8 @@ GEM
     execjs (2.5.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    font-awesome-sass (4.3.2.1)
+      sass (~> 3.2)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hashie (3.4.2)
@@ -207,9 +225,12 @@ DEPENDENCIES
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)
+  datetimepicker-rails!
   devise
+  font-awesome-sass (~> 4.3.0)
   jbuilder (~> 2.0)
   jquery-rails
+  momentjs-rails (~> 2.9)!
   omniauth-facebook (~> 2.0.1)
   pry-rails
   rails (= 4.2.1)

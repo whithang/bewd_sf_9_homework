@@ -1,17 +1,17 @@
-
-
 <h1><center>Welcome to the Ultimate Wine Country Trip Planner</center></h1>
 <div class="col-md-12">
 	<div class="table-responsive" align="center">
-		<h1 style="color:#000000;"><i>We are here to help you Create Memories</i></h1>
+
+
+    <h1 style="color:#000000;"><i>We are here to help you Create Memories</i></h1>
     <br><%= image_tag('WineGlasses.jpg', size: '100') %>
 		<p><br>Where do you want to find tasting rooms?
       <br><br>
 
-      <%= form_tag("wineries/search", method: "post") do %>
-        <%= label_tag(:address, "Search:") %>
-        <%= text_field_tag(:address, "Enter a location here", size: "100") %>
-        <%= submit_tag("Go") %>
+      <%= form_tag("wineries_search", method: "post") do %>
+        <%= label_tag(:city, "Search by city:") %>
+        <%= text_field_tag(:city) %>
+        <%= submit_tag("Go", class: "btn btn-lg btn-default") %>
       <% end %>
     </p>					
     <br>

@@ -15,8 +15,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
 gem 'omniauth-facebook', '~> 2.0.1'
 # gem 'omniauth-openid'
+gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'font-awesome-sass', '~> 4.3.0'
 gem 'devise'
 
 group :development, :test do

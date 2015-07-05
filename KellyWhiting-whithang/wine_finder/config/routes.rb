@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   # get 'fb_home/show'
 
 
-  get 'auth/:provider/callback', to: 'fb_sessions#create'
-  get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'fb_sessions#destroy', as: 'signout'
+  # get 'auth/:provider/callback', to: 'fb_sessions#create'
+  # get 'auth/failure', to: redirect('/')
+  # get 'signout', to: 'fb_sessions#destroy', as: 'signout'
 
   devise_for :users, :controllers => {:registrations => "registrations"}
   # devise_for :users
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   # get "memories/select", to: "memories#select", as: :memory_select
 
-  post "/wineries/search", to: "wineries#search", as: :winery_search
+  post "/wineries_search", to: "wineries#search", as: :winery_search
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
