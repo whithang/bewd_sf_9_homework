@@ -1,7 +1,7 @@
 <div class="container">
 		<div class="row">
 			<div class="col-md-8"> 
-				<center><h1>Edit <%=@memory_detail.memory.name %> Memory  </h1>
+				<center><h1>Edit Memory for <%=@memory_detail.memory.name %></h1>
 				<br>for<br><br>
 				<h3><b> <%= Winery.where(id: @memory_detail[:winery_id]).first
 .name %></h3></b></center><br>
@@ -11,7 +11,8 @@
 
 						<%= f.input :notes, label: "What I want to remember about this winery..." %>
 						<%= f.input :visited, label: "I have visited this winery before " %>
-						<%= f.input :visited_date, label: "Visit date:", :include_blank => true %>
+						
+						<%= f.input :visited_date, placeholder: "Date", as: :date_picker, placeholder: "MM/DD/YYYY", wrapper: :ranged_datetime, label: "Trip Date" %>
 						<!-- make visited date appear if above is selected -->
 						<%= f.hidden_field :winery_id, value: @memory_detail[:winery_id] %>
 						<%= f.submit "Yay!"%>

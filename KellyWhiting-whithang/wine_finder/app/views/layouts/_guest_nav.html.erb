@@ -5,7 +5,7 @@
       <li><%= image_tag('WineGlasses.jpg', size: '50') %></li>
       <li><a href=<%= wineries_path %>>Wineries</a></li>
       <%= form_tag("wineries_search", method: "post", class: "navbar-form navbar-left") do %>
-        <%= label_tag(:city, "Search by city:") %>
+        <font color="grey"><%= label_tag(:city, "Search by city:") %></font>
         <%= text_field_tag(:city) %>
         <%= submit_tag("Go", class: "btn btn-default") %>
       <% end %>

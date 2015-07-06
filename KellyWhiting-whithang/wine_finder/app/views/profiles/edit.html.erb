@@ -4,12 +4,12 @@
 				<h1>Edit My Profile</h1>
 					<p>Update any fields you want to edit:</p>
 
-					<%= simple_form_for @profile do |f| %>
+					<%= simple_form_for @profile, html: {class: 'form-horizontal'} do |f| %>
 
 					<%= f.input :first_name %>
 					<%= f.input :last_name %>
 					<%= f.input :bio, label: "About Me"%>
-					<%= f.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:month, :day, :year], :include_blank => true %>
+					<%= f.input :birth_date, placeholder: "MM/DD/YYYY", as: :date_picker, label: "Birth Date" %>
 					<%= f.input :street, label: "Street address"%>
 					<%= f.input :city %>
 					<%= f.input :state %>

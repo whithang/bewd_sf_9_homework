@@ -3,7 +3,7 @@
 
 
   <% if current_user %>
-      <font color="white"><span class="glyphicon glyphicon-user"></span><%= "User: @user.email" %></font>
+      <font color="white"><span class="glyphicon glyphicon-user"></span><%= "User: " + current_user.email %></font>
       <br><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
     <% else %>
       <%= link_to "Sign In", new_user_session_path %>
