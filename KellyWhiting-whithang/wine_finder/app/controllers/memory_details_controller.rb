@@ -7,6 +7,7 @@ class MemoryDetailsController < ApplicationController
 
 	def new 
       @memory_detail = MemoryDetail.new
+
       if params[:winery]
         @winery = Winery.find(params[:winery]) 
 # this is correct param when coming from winery/index
@@ -18,7 +19,7 @@ class MemoryDetailsController < ApplicationController
 
   def create
     @memory_detail = MemoryDetail.new(memory_detail_params)
-
+    
     if @memory_detail.save
       redirect_to memory_path(@memory_detail.memory_id), notice: "Your Memory was updated successfully"
     else
@@ -47,6 +48,7 @@ class MemoryDetailsController < ApplicationController
   # end
  	
  	def show
+    
  		@memory_detail = get_memory_detail
   end
 

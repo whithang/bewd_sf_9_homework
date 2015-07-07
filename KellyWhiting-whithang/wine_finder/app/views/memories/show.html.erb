@@ -15,7 +15,8 @@
 			<tr>
 				<th>Winery </th>
 				<th>Notes </th>
-				<th>Visited Before</th>
+				<th></th>
+				<th>Date of Visit</th>
 			</tr>
 				<% @memory.memory_details.each do |detail| %>
 					<tr class="small">
@@ -26,8 +27,12 @@
 						<td><%= detail.notes %>
 						</td>
 						<td><% if detail.visited == true %>
-							<%= detail.visited_date.strftime("%B %e %Y") unless detail.visited_date.nil?%>
+									I've been here before
 							<% end %>
+						</td>
+						<td>
+							<%= detail.visited_date.strftime("%B %e %Y") unless detail.visited_date.nil?%>
+							
 						</td>
 						<td><%= link_to "Edit Memory Detail", edit_memory_detail_path(detail), class: 'btn btn-info' %>
 				</td>

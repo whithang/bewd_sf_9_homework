@@ -50,6 +50,7 @@ class MemoriesController < ApplicationController
   # end
  	
  	def show
+    
  		@memory = get_memory
     # @memory_details = MemoryDetail.where(memory_id: @memory)
     # @winery = Winery.where(id: @memory)
